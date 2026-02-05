@@ -15,11 +15,13 @@
     :root {
       --primary-color: #0056b3;
       --secondary-color: #28a745;
+      --accent-color: #667eea;
       --text-color: #333;
       --text-muted: #666;
       --bg-color: #f8f9fa;
       --border-color: #ddd;
       --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
 
     * {
@@ -53,18 +55,26 @@
       padding: 0 20px;
     }
 
-    /* Navbar */
+    /* Sticky Navbar */
     .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 0;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       margin-bottom: 2rem;
       border-radius: 10px;
       margin-top: 1rem;
       box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
 
     .navbar-brand {
@@ -82,6 +92,7 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0 1.5rem;
+      color: var(--primary-color);
     }
 
     .navbar-nav {
@@ -112,12 +123,11 @@
       justify-content: center;
       gap: 4rem;
       text-align: left;
-      padding: 3rem 0;
+      padding: 3rem 2rem;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
-      padding: 3rem 2rem;
     }
 
     .hero-content {
@@ -184,6 +194,84 @@
       transform: translateY(-3px);
     }
 
+    /* Research Interests Section */
+    .interests-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .interests-content {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+
+    /* Timeline Highlights */
+    .timeline-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary-color);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-date {
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-content {
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .timeline-content strong {
+      color: var(--primary-color);
+    }
+
     hr {
       border: 0;
       border-top: 1px solid var(--border-color);
@@ -198,58 +286,35 @@
       color: var(--text-color);
     }
 
-    .row {
-      display: flex;
-      flex-wrap: wrap;
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Card Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-bottom: 3rem;
     }
 
-    .col {
-      flex: 2;
-      min-width: 300px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .col:last-child {
-      flex: 1.5;
-    }
-
-    /* News/Highlights List */
-    .news-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .news-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-color);
-      line-height: 1.6;
-    }
-
-    .news-list li:last-child {
-      border-bottom: none;
-    }
-
-    /* Cards */
     .card {
       background: white;
       border-radius: 8px;
       box-shadow: var(--card-shadow);
-      margin-bottom: 1rem;
       transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--card-hover-shadow);
     }
 
     .card-body {
-      padding: 1rem;
+      padding: 1.5rem;
     }
 
     .card-title {
@@ -264,56 +329,131 @@
       line-height: 1.6;
     }
 
-    .text-muted {
-      color: var(--text-muted);
-    }
-
-    /* Startup Section */
-    .startups {
+    /* Content Sections */
+    .content-section {
       background: rgba(255, 255, 255, 0.95);
       padding: 2rem;
       border-radius: 10px;
       box-shadow: var(--card-shadow);
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    /* List Styles */
+    .styled-list {
+      list-style: none;
+      padding: 0;
     }
 
-    .startup-card {
-      background: rgba(255, 255, 255, 0.8);
-      border: 2px solid rgba(0, 86, 179, 0.3);
+    .styled-list li {
+      padding: 0.75rem 0;
+      padding-left: 2rem;
+      position: relative;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .startup-card ul {
-      padding-left: 1.2rem;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+    .styled-list li:last-child {
+      border-bottom: none;
     }
 
-    .startup-card li {
-      margin-bottom: 0.3rem;
+    .styled-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    /* Expandable Sections */
+    .expandable-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .expand-header {
+      background: var(--bg-color);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+      user-select: none;
+    }
+
+    .expand-header:hover {
+      background: #e9ecef;
+    }
+
+    .expand-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--text-color);
+    }
+
+    .expand-icon {
+      transition: transform 0.3s;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .expand-icon.active {
+      transform: rotate(180deg);
+    }
+
+    .expand-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .expand-content.active {
+      max-height: 2000px;
+      padding-top: 1rem;
     }
 
     /* Publications */
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-out;
+    .publication-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
+    .publication-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .publication-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .publication-authors {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+
+    .publication-venue {
+      font-style: italic;
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-links a {
+      color: var(--primary-color);
+      margin-right: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .publication-links a:hover {
+      text-decoration: underline;
     }
 
     /* Button */
@@ -350,8 +490,28 @@
       color: var(--text-muted);
     }
 
+    /* Animations */
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Responsive */
     @media (max-width: 968px) {
+      .navbar {
+        position: relative;
+      }
+
       .navbar-nav {
         display: none;
         flex-direction: column;
@@ -359,9 +519,11 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
+        background: rgba(255, 255, 255, 0.98);
         padding: 1rem;
         box-shadow: var(--card-shadow);
+        border-radius: 10px;
+        margin-top: 0.5rem;
       }
 
       .navbar-nav.active {
@@ -375,6 +537,7 @@
       .hero {
         flex-direction: column-reverse;
         text-align: center;
+        gap: 2rem;
       }
 
       .social-links {
@@ -389,8 +552,31 @@
         max-width: 100%;
       }
 
-      .row {
-        flex-direction: column;
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item {
+        padding-left: 1rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-image img {
+        width: 200px;
+        height: 200px;
       }
     }
   </style>
@@ -401,21 +587,24 @@
   <canvas id="ai-background"></canvas>
 
   <header class="container">
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <a class="navbar-brand" href="index.html">Mustansar Fiaz</a>
       <button class="mobile-menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
       </button>
       <div class="navbar-nav" id="navMenu">
-        <a class="nav-link active" href="index.html">Home</a>
-        <a class="nav-link" href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">Publications</a>
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#research">Research</a>
+        <a class="nav-link" href="#publications">Publications</a>
+        <a class="nav-link" href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">Google Scholar</a>
         <a class="nav-link" href="mailto:mustansar.fiaz@ibm.com">Contact</a>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero animate-fade-in">
+    <!-- Hero Section -->
+    <section id="home" class="hero animate-fade-in">
       <div class="hero-content">
         <h1>Mustansar Fiaz</h1>
         <div class="hero-subtitle">
@@ -438,165 +627,304 @@
 
       <div class="hero-image">
         <img src="images/mustansar1.png" alt="Mustansar Fiaz">
-    </div>
+      </div>
     </section>
 
-    <hr>
+    <!-- Research Interests -->
+    <section id="research" class="interests-section animate-fade-in">
+      <h2 class="section-title">Research Interests</h2>
+      <p class="interests-content">
+        I am actively involved in research focused on diverse areas of <strong>computer vision</strong> and <strong>deep learning</strong>, particularly in the fields of <strong>remote sensing</strong>, <strong>medical imaging</strong>, and <strong>visual language models</strong>.
+      </p>
+    </section>
 
-    <div class="row">
-      <!-- Highlights / News -->
-      <section class="col animate-fade-in">
-        <h2 class="section-title">Highlights</h2>
-        <ul class="news-list">
-          <li><strong>[CVPR 2025]</strong> Paper accepted on <strong>EarthDial</strong> - Multi-sensory Earth Observations.</li>
-          <li><strong>[WACV 2025]</strong> Oral presentation for <strong>COSNet</strong> - Semantic Segmentation.</li>
-          <li><strong>[Impact]</strong> <strong>900+</strong> citations across publications.</li>
-          <li><strong>[Award]</strong> <strong>Outstanding Research CSE Thesis Award</strong> (2021).</li>
-          <li><strong>[Award]</strong> <strong>Best Paper Award</strong> at IW-FCV 2022.</li>
-          <li><strong>[Patent]</strong> US Patent published (2024).</li>
-        </ul>
-      </section>
-
-      <!-- Featured Research -->
-      <section class="col animate-fade-in">
-        <h2 class="section-title">Spotlight Research</h2>
-        <div class="card">
-          <div class="card-body">
-            <h4 style="margin: 0; font-size: 1.1rem;">EarthDial (CVPR 2025)</h4>
-            <p class="text-muted" style="margin: 0.5rem 0; font-size: 0.9rem;">Turning Multi-sensory Earth Observations to Interactive Dialogues.</p>
-            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="font-size: 0.85rem; color: var(--primary-color);">Read Paper <i class="fas fa-arrow-right"></i></a>
-          </div>
+    <!-- Timeline Highlights -->
+    <section class="timeline-section animate-fade-in">
+      <h2 class="section-title">Recent Highlights</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">07/2025</div>
+          <div class="timeline-content">1 paper accepted in <strong>BMVC 2025</strong></div>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <h4 style="margin: 0; font-size: 1.1rem;">SA2-Net (BMVC 2023)</h4>
-            <p class="text-muted" style="margin: 0.5rem 0; font-size: 0.9rem;">Scale-aware Attention Network for Microscopic Image Segmentation.</p>
-            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="font-size: 0.85rem; color: var(--primary-color);">Read Paper <i class="fas fa-arrow-right"></i></a>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-date">03/2025</div>
+          <div class="timeline-content">1 paper accepted in <strong>IEEE IGARSS 2025</strong> - Oral presentation</div>
         </div>
-      </section>
-    </div>
+        <div class="timeline-item">
+          <div class="timeline-date">02/2025</div>
+          <div class="timeline-content">1 paper accepted in <strong>CVPR 2025</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01/2025</div>
+          <div class="timeline-content">1 paper accepted in <strong>IEEE ISBI 2025</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">11/2024</div>
+          <div class="timeline-content">1 paper accepted in <strong>WACV 2025</strong> - Oral presentation</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">07/2024</div>
+          <div class="timeline-content">1 paper accepted in <strong>Pattern Recognition</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">05/2024</div>
+          <div class="timeline-content">1 <strong>US patent</strong> published</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">04/2024</div>
+          <div class="timeline-content">2 papers accepted in <strong>IEEE IGARSS 2024</strong> - both oral presentations</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01/2024</div>
+          <div class="timeline-content">1 paper accepted in <strong>ISBI 2024</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01/2024</div>
+          <div class="timeline-content">2 papers accepted in <strong>IEEE TGRS</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">12/2023</div>
+          <div class="timeline-content">1 paper accepted in <strong>IEEE TAI</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">10/2023</div>
+          <div class="timeline-content">Joined <strong>IBM Research</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">10/2023</div>
+          <div class="timeline-content">1 paper accepted in <strong>WACV 2024</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">08/2023</div>
+          <div class="timeline-content">1 paper accepted in <strong>BMVC 2023</strong> - Oral presentation</div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Research Background Section -->
-    <section class="startups animate-fade-in">
+    <!-- Research Background -->
+    <section class="content-section animate-fade-in">
       <h2 class="section-title">Research Background</h2>
-      <div class="card-grid" style="grid-template-columns: 1fr;">
-        <article class="card" style="background: rgba(255,255,255,0.8);">
+      <p style="line-height: 1.8; margin-bottom: 1rem;">
+        Currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI) with Prof. Fahad Khan and Hisham Cholakkal at the Intelligent Visual Analytics Lab.
+      </p>
+      <p style="line-height: 1.8;">
+        I received my Ph.D. from <strong>Kyungpook National University</strong>, Daegu, Republic of Korea in 2021, supervised by Prof. Soon Ki Jung. My Master's degree was from Sejong University in 2016, supervised by Prof. Sung Wook Baik.
+      </p>
+    </section>
+
+    <!-- Featured Research -->
+    <section class="animate-fade-in">
+      <h2 class="section-title">Spotlight Research</h2>
+      <div class="card-grid">
+        <div class="card">
           <div class="card-body">
-            <p class="card-text" style="line-height: 1.8;">
-              Currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI) with Prof. Fahad Khan and Hisham Cholakkal at the Intelligent Visual Analytics Lab.
-              <br><br>
-              I received my Ph.D. from <strong>Kyungpook National University</strong>, Daegu, Republic of Korea in 2021, supervised by Prof. Soon Ki Jung. My Master's degree was from Sejong University in 2016, supervised by Prof. Sung Wook Baik.
-            </p>
+            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">EarthDial</h4>
+            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Turning Multi-sensory Earth Observations to Interactive Dialogues</p>
+            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">CVPR 2025</p>
+            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">SA2-Net</h4>
+            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Scale-aware Attention Network for Microscopic Image Segmentation</p>
+            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">BMVC 2023 (Oral)</p>
+            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">COSNet</h4>
+            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Novel Semantic Segmentation Network using Enhanced Boundaries</p>
+            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">WACV 2025 (Oral)</p>
+            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Recent Publications -->
-    <section class="animate-fade-in">
+    <section id="publications" class="content-section animate-fade-in">
       <h2 class="section-title">Recent Publications</h2>
-      <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--card-shadow);">
-
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">EarthDial: Turning Multi-sensory Earth Observations to Interactive Dialogues</div>
-          <div style="font-size: 0.95rem; color: #666;">S. Soni*, A. Dudhane*, H. Debary*, <strong>Mustansar Fiaz*</strong>, M. A. Munir, M. S. Danisho, P. Fraccaro, C. Watson, L. J. Klein, S. Khan, F.S. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">CVPR 2025</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/hiyamdebary/EarthDial" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      
+      <div class="publication-item">
+        <div class="publication-title">EarthDial: Turning Multi-sensory Earth Observations to Interactive Dialogues</div>
+        <div class="publication-authors">S. Soni*, A. Dudhane*, H. Debary*, <strong>Mustansar Fiaz*</strong>, M. A. Munir, M. S. Danisho, P. Fraccaro, C. Watson, L. J. Klein, S. Khan, F.S. Khan</div>
+        <div class="publication-venue">CVPR 2025</div>
+        <div class="publication-links">
+          <a href="https://arxiv.org/abs/2412.15190" target="_blank">Paper</a>
+          <a href="https://github.com/hiyamdebary/EarthDial" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">COSNet: A Novel Semantic Segmentation Network using Enhanced Boundaries in Cluttered Scenes</div>
-          <div style="font-size: 0.95rem; color: #666;">M. Ali, M. Javaid, M. Noman, <strong>Mustansar Fiaz</strong>, S. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">WACV 2025 (Oral)</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/techmn/cosnet" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">COSNet: A Novel Semantic Segmentation Network using Enhanced Boundaries in Cluttered Scenes</div>
+        <div class="publication-authors">M. Ali, M. Javaid, M. Noman, <strong>Mustansar Fiaz</strong>, S. Khan</div>
+        <div class="publication-venue">WACV 2025 (Oral)</div>
+        <div class="publication-links">
+          <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank">Paper</a>
+          <a href="https://github.com/techmn/cosnet" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">Guided-attention and gated-aggregation network for medical image segmentation</div>
-          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, M. Noman, H. Cholakkal, R.M. Anwer, J. Hanna, F.S. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">Pattern Recognition, 2024</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://www.sciencedirect.com/science/article/pii/S0031320324005636" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/mustansarfiaz/ga2net" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">Guided-attention and gated-aggregation network for medical image segmentation</div>
+        <div class="publication-authors"><strong>Mustansar Fiaz</strong>, M. Noman, H. Cholakkal, R.M. Anwer, J. Hanna, F.S. Khan</div>
+        <div class="publication-venue">Pattern Recognition, 2024</div>
+        <div class="publication-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0031320324005636" target="_blank">Paper</a>
+          <a href="https://github.com/mustansarfiaz/ga2net" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">ELGC-Net: Efficient Local–Global Context Aggregation for Remote Sensing Change Detection</div>
-          <div style="font-size: 0.95rem; color: #666;">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Khan, F.S. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">IEEE TGRS, 2024</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10423067" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/techmn/elgcnet" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">ELGC-Net: Efficient Local–Global Context Aggregation for Remote Sensing Change Detection</div>
+        <div class="publication-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Khan, F.S. Khan</div>
+        <div class="publication-venue">IEEE TGRS, 2024</div>
+        <div class="publication-links">
+          <a href="https://ieeexplore.ieee.org/abstract/document/10423067" target="_blank">Paper</a>
+          <a href="https://github.com/techmn/elgcnet" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">Remote Sensing Change Detection With Transformers Trained from Scratch</div>
-          <div style="font-size: 0.95rem; color: #666;">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, S. Khan, F.S. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">IEEE TGRS, 2024</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://arxiv.org/pdf/2304.06710.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/mustansarfiaz/ScratchFormer" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">Remote Sensing Change Detection With Transformers Trained from Scratch</div>
+        <div class="publication-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, S. Khan, F.S. Khan</div>
+        <div class="publication-venue">IEEE TGRS, 2024</div>
+        <div class="publication-links">
+          <a href="https://arxiv.org/pdf/2304.06710.pdf" target="_blank">Paper</a>
+          <a href="https://github.com/mustansarfiaz/ScratchFormer" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">SA2-Net: Scale-aware Attention Network for Microscopic Image Segmentation</div>
-          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, M. Heidari, R.M. Anwer, H. Cholakkal</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">BMVC 2023 (Oral)</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/mustansarfiaz/SA2-Net" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">SA2-Net: Scale-aware Attention Network for Microscopic Image Segmentation</div>
+        <div class="publication-authors"><strong>Mustansar Fiaz</strong>, M. Heidari, R.M. Anwer, H. Cholakkal</div>
+        <div class="publication-venue">BMVC 2023 (Oral)</div>
+        <div class="publication-links">
+          <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank">Paper</a>
+          <a href="https://github.com/mustansarfiaz/SA2-Net" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div style="margin-bottom: 1rem;">
-          <div style="font-weight: 600; font-size: 1.05rem;">SAT: Scale-Augmented Transformer for Person Search</div>
-          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, H. Cholakkal, R.M. Anwer, F. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">WACV 2023</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Fiaz_SAT_Scale-Augmented_Transformer_for_Person_Search_WACV_2023_paper.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/mustansarfiaz/SAT" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">SAT: Scale-Augmented Transformer for Person Search</div>
+        <div class="publication-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, R.M. Anwer, F. Khan</div>
+        <div class="publication-venue">WACV 2023</div>
+        <div class="publication-links">
+          <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Fiaz_SAT_Scale-Augmented_Transformer_for_Person_Search_WACV_2023_paper.pdf" target="_blank">Paper</a>
+          <a href="https://github.com/mustansarfiaz/SAT" target="_blank">Code</a>
         </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+      </div>
 
-        <div>
-          <div style="font-weight: 600; font-size: 1.05rem;">PS-ARM: An End-to-End Attention-aware Relation Mixer Network for Person Search</div>
-          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, F. Khan</div>
-          <div style="font-style: italic; color: #888; font-size: 0.9rem;">ACCV 2022</div>
-          <div style="margin-top: 0.5rem;">
-            <a href="https://openaccess.thecvf.com/content/ACCV2022/papers/Fiaz_PS-ARM_An_End-to-End_Attention-aware_Relation_Mixer_Network_for_Person_Search_ACCV_2022_paper.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
-            <a href="https://github.com/mustansarfiaz/PS-ARM" target="_blank" style="color: var(--primary-color);">Code</a>
-          </div>
+      <div class="publication-item">
+        <div class="publication-title">PS-ARM: An End-to-End Attention-aware Relation Mixer Network for Person Search</div>
+        <div class="publication-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, F. Khan</div>
+        <div class="publication-venue">ACCV 2022</div>
+        <div class="publication-links">
+          <a href="https://openaccess.thecvf.com/content/ACCV2022/papers/Fiaz_PS-ARM_An_End-to-End_Attention-aware_Relation_Mixer_Network_for_Person_Search_ACCV_2022_paper.pdf" target="_blank">Paper</a>
+          <a href="https://github.com/mustansarfiaz/PS-ARM" target="_blank">Code</a>
         </div>
+      </div>
 
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank" class="btn">View All Publications <i class="fas fa-arrow-right"></i></a>
       </div>
     </section>
 
-    <div style="text-align: center; margin-top: 4rem;">
-      <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank" class="btn">View All Publications <i class="fas fa-arrow-right"></i></a>
-    </div>
+    <!-- Expandable Sections -->
+    <section class="content-section animate-fade-in">
+      
+      <!-- Mentorship -->
+      <div class="expandable-section">
+        <div class="expand-header" onclick="toggleExpand(this)">
+          <h3><i class="fas fa-users" style="margin-right: 0.5rem;"></i>Mentorship</h3>
+          <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="expand-content">
+          <ul class="styled-list">
+            <li>Mubashir Noman (PhD @ MBZUAI, 2022-2025)</li>
+            <li>Muhammad Ali (PhD @ MBZUAI, 2022-2025)</li>
+            <li>Daniya Abdul Kareem (PhD @ MBZUAI, 2022-2025)</li>
+            <li>Mohamed Fazli Mohamed Imam (MS @ MBZUAI, 2022-2024)</li>
+            <li>Imane Hilal (MS @ MBZUAI, 2021-2023)</li>
+            <li>Mohammed Almansoori (MS @ MBZUAI, 2021-2023)</li>
+            <li>Reem Alameeri (MS @ MBZUAI, 2021-2023)</li>
+            <li>Md Maklachur Rahman (MS @ KNU, 2018-2020)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Volunteers -->
+      <div class="expandable-section">
+        <div class="expand-header" onclick="toggleExpand(this)">
+          <h3><i class="fas fa-hands-helping" style="margin-right: 0.5rem;"></i>Service & Volunteers</h3>
+          <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="expand-content">
+          <ul class="styled-list">
+            <li><strong>ICCV 2023</strong> Workshop on New Ideas in Vision Transformers, Paris, France, October 02, 2023</li>
+            <li><strong>NeurIPS 2022</strong> Workshop on Vision Transformers: Theory and Applications, New Orleans, USA, Dec 9, 2022</li>
+            <li><strong>ACCV 2022</strong> Workshop on Vision Transformers: Theory and Applications, Macau SAR, China, Dec. 5, 2022</li>
+            <li><strong>IW-FCV 2021</strong> The 27th International Workshop on Frontiers of Computer Vision, Daegu, South Korea, Feb. 22-23, 2021</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Honors & Awards -->
+      <div class="expandable-section">
+        <div class="expand-header" onclick="toggleExpand(this)">
+          <h3><i class="fas fa-trophy" style="margin-right: 0.5rem;"></i>Honors & Awards</h3>
+          <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="expand-content">
+          <ul class="styled-list">
+            <li>Oral Paper Presentation in BMVC 2023</li>
+            <li>Best Paper Award in IW-FCV 2022</li>
+            <li>Best Presentation Award in IW-FCV 2022</li>
+            <li>Outstanding Research CSE Thesis Award, 2021</li>
+            <li>Best Student Paper Award in IW-FCV 2020</li>
+            <li>Joint Secretary, PSAK, 2018-2019</li>
+            <li>Secretary Information, PSAK, 2017-2018</li>
+            <li>KNU International Graduate Scholarship (KINGS) for Ph.D. studies, 03.2016-02.2021</li>
+            <li>Fully funded scholarship by Sejong University for MS studies, 03.2014-02.2016</li>
+            <li>Fellowship by Pakistan Institute of Engineering and Applied Sciences (PIEAS) for BS (Computer and Information Science) studies, 2007-2011</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Book Chapters & Patent -->
+      <div class="expandable-section">
+        <div class="expand-header" onclick="toggleExpand(this)">
+          <h3><i class="fas fa-book" style="margin-right: 0.5rem;"></i>Book Chapters & Patent</h3>
+          <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="expand-content">
+          <h4 style="margin: 1rem 0 0.75rem 0; color: var(--primary-color);">Book Chapter</h4>
+          <div style="padding-left: 1rem; margin-bottom: 1.5rem;">
+            <p style="line-height: 1.7;">
+              <strong>Mustansar Fiaz</strong>, Arif Mahmood and Soon Ki Jung. "Deep Siamese Networks toward Robust Visual Tracking", ISBN 978-1-78985-158-8, IntechOpen, DOI: 10.5772/intechopen.86235.
+              <br>
+              <a href="https://www.intechopen.com/online-first/deep-siamese-networks-toward-robust-visual-tracking" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Online</a>
+            </p>
+          </div>
+
+          <h4 style="margin: 1rem 0 0.75rem 0; color: var(--primary-color);">Patent</h4>
+          <div style="padding-left: 1rem;">
+            <p style="line-height: 1.7;">
+              <strong>Mustansar Fiaz</strong>, Hisham Cholakkal, Sanath Narayan, Rao Muhammad Anwer, and Fahad Shahbaz Khan. "System and Method for Attention-aware Relation Mixer for Person Search", <strong>United States patent application US 17/983,741. 2024 May 9</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
   </main>
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Mustansar Fiaz</p>
+      <p>&copy; 2025 Mustansar Fiaz. All rights reserved.</p>
     </div>
   </footer>
 
@@ -683,6 +1011,62 @@
       navMenu.classList.toggle('active');
     });
 
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Sticky Navbar Effect
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    // Expandable Sections
+    function toggleExpand(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.expand-icon');
+      
+      content.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    // Smooth Scroll for Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
     // Scroll Animation
     const observerOptions = {
       threshold: 0.1,
@@ -703,6 +1087,28 @@
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s, transform 0.6s';
       observer.observe(el);
+    });
+
+    // Active Navigation Link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 
