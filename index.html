@@ -1,614 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mustansar Fiaz - Staff Research Scientist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mustansar Fiaz - Staff Research Scientist</title>
 
-        :root {
-            --bg-primary: #fdfcfb;
-            --bg-secondary: #f8f6f3;
-            --text-primary: #1a1614;
-            --text-secondary: #6b6560;
-            --accent: #d35d3f;
-            --accent-light: #e8917a;
-            --border: #e6e3df;
-            --highlight-bg: #fff9f5;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        body {
-            font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #28a745;
+      --text-color: #333;
+      --text-muted: #666;
+      --bg-color: #f8f9fa;
+      --border-color: #ddd;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .grain-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.03;
-            z-index: 1000;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        header {
-            padding: 3rem 0 1.5rem;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
+    #ai-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+    }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 3rem;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        .header-text {
-            flex: 1;
-        }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: var(--card-shadow);
+    }
 
-        h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            animation: fadeInUp 0.8s ease-out;
-        }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 0 1.5rem;
+    }
 
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
-        }
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0 1.5rem;
+    }
 
-        .affiliation {
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
+    .navbar-nav {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0 1.5rem;
+    }
 
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
 
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--primary-color);
+      color: white;
+    }
 
-        .contact-links a:hover {
-            background: var(--highlight-bg);
-            border-color: var(--accent-light);
-            transform: translateY(-2px);
-        }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      text-align: left;
+      padding: 3rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+      padding: 3rem 2rem;
+    }
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            animation: fadeIn 1s ease-out 0.4s both;
-        }
+    .hero-content {
+      flex: 1;
+    }
 
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
 
-        main {
-            padding: 4rem 0;
-        }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
 
-        section {
-            margin-bottom: 5rem;
-            animation: fadeInUp 1s ease-out both;
-        }
+    .hero-text {
+      color: #555;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      max-width: 600px;
+      line-height: 1.8;
+    }
 
-        section:nth-child(2) { animation-delay: 0.5s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.7s; }
+    .hero-image img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 5px solid white;
+    }
 
-        h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            position: relative;
-            display: inline-block;
-        }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-top: 1rem;
+    }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
 
-        .bio {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            max-width: 900px;
-        }
+    .social-links a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
 
-        .bio a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border-color);
+      margin: 3rem 0;
+    }
 
-        .bio a:hover {
-            border-bottom-color: var(--accent);
-        }
+    /* Section Styles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
 
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
 
-        .highlight-card {
-            background: var(--bg-secondary);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-            transition: all 0.3s ease;
-        }
+    .col {
+      flex: 2;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+    }
 
-        .highlight-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(211, 93, 63, 0.1);
-        }
+    .col:last-child {
+      flex: 1.5;
+    }
 
-        .highlight-date {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
+    /* News/Highlights List */
+    .news-list {
+      list-style: none;
+      padding: 0;
+    }
 
-        .highlight-text {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
+    .news-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      line-height: 1.6;
+    }
 
-        .research-areas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
+    .news-list li:last-child {
+      border-bottom: none;
+    }
 
-        .research-tag {
-            padding: 0.5rem 1rem;
-            background: var(--highlight-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        .paper-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
 
-        .paper-item {
-            padding: 1.75rem;
-            background: var(--bg-secondary);
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
+    .card-body {
+      padding: 1rem;
+    }
 
-        .paper-item:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
 
-        .paper-title {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
+    .card-text {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
 
-        .paper-authors {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
+    .text-muted {
+      color: var(--text-muted);
+    }
 
-        .paper-authors strong {
-            color: var(--text-primary);
-        }
+    /* Startup Section */
+    .startups {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 3rem;
+    }
 
-        .paper-venue {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
-        .paper-links {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
+    .startup-card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(0, 86, 179, 0.3);
+    }
 
-        .paper-link {
-            padding: 0.4rem 1rem;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
+    .startup-card ul {
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
 
-        .paper-link:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
+    .startup-card li {
+      margin-bottom: 0.3rem;
+    }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    /* Publications */
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
 
-        .stat-card {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, var(--highlight-bg) 0%, var(--bg-secondary) 100%);
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-        .stat-number {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
 
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+    .btn:hover {
+      background: #003d82;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    footer p {
+      color: var(--text-muted);
+    }
 
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-            }
+    /* Responsive */
+    @media (max-width: 968px) {
+      .navbar-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: var(--card-shadow);
+      }
 
-            h1 {
-                font-size: 2.5rem;
-            }
+      .navbar-nav.active {
+        display: flex;
+      }
 
-            .contact-links {
-                justify-content: center;
-            }
+      .mobile-menu-toggle {
+        display: block;
+      }
 
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
 
-            .highlights-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      .social-links {
+        justify-content: center;
+      }
 
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--accent);
-            z-index: 1001;
-            transition: width 0.1s ease;
-        }
-    </style>
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="grain-overlay"></div>
-    <div class="scroll-indicator" id="scrollIndicator"></div>
 
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="header-text">
-                    <h1>Mustansar Fiaz</h1>
-                    <p class="subtitle">Staff Research Scientist</p>
-                    <p class="affiliation">IBM Research, Abu Dhabi</p>
-                    <div class="contact-links">
-                        <a href="mailto:mustansar.fiaz@ibm.com">📧 Email</a>
-                        <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
-                        <a href="https://github.com/mustansarfiaz" target="_blank">💻 GitHub</a>
-                        <a href="https://www.linkedin.com/in/mustansar-fiaz-62461618/" target="_blank">💼 LinkedIn</a>
-                        <a href="https://orcid.org/0000-0003-2289-2284" target="_blank">🆔 ORCID</a>
-                    </div>
-                </div>
-                <div class="profile-image">
-                    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQrpIYAmikFxqCxvcffIj_fxF1DWsOg_F_Qe_XN8Mo4cy3j-hdpgdJmEHM_QNzH_arOZXktQqRnwQSKeoLC1sBtu1OerrtKGt8VdU_Ca9J6IbkqeJIWbDGUxmWF52paqp_OLsec8rR6sbsGwhjnkCbHcwZykjh7z05bAg665rABXTWpxbd-iwsbf7M=w1280" alt="Mustansar Fiaz">
-                </div>
-            </div>
-        </header>
+  <canvas id="ai-background"></canvas>
 
-        <main>
-            <section id="about">
-                <h2>About</h2>
-                <div class="bio">
-                    <p>I am currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at <a href="https://mbzuai.ac.ae/" target="_blank">Mohamed bin Zayed University of Artificial Intelligence</a> (MBZUAI) with Prof. <a href="https://sites.google.com/view/fahadkhans/home" target="_blank">Fahad Khan</a> and <a href="https://mbzuai.ac.ae/study/faculty/hisham-cholakkal" target="_blank">Hisham Cholakkal</a> at the Intelligent Visual Analytics Lab.</p>
-                    
-                    <p style="margin-top: 1rem;">I received my Ph.D. from <a href="http://en.knu.ac.kr/main/main.htm" target="_blank">Kyungpook National University</a>, Daegu, Republic of Korea in 2021, where I contributed as a researcher in the Virtual Reality laboratory, supervised by Prof. Soon Ki Jung. Prior to that, I pursued my Master's degree from Sejong University in 2016, supervised by Prof. Sung Wook Baik.</p>
-                </div>
+  <header class="container">
+    <nav class="navbar">
+      <a class="navbar-brand" href="index.html">Mustansar Fiaz</a>
+      <button class="mobile-menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="navbar-nav" id="navMenu">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">Publications</a>
+        <a class="nav-link" href="mailto:mustansar.fiaz@ibm.com">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-number">900+</span>
-                        <span class="stat-label">Citations</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">56</span>
-                        <span class="stat-label">Publications</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">CVPR '25</span>
-                        <span class="stat-label">Recent Acceptance</span>
-                    </div>
-                </div>
-            </section>
+  <main class="container">
+    <section class="hero animate-fade-in">
+      <div class="hero-content">
+        <h1>Mustansar Fiaz</h1>
+        <div class="hero-subtitle">
+          Staff Research Scientist | Computer Vision | Deep Learning | AI
+        </div>
+        <p class="hero-text">
+          Staff research scientist at <strong>IBM Research, Abu Dhabi</strong>, working on <strong>remote sensing, medical imaging, visual language models, and person search</strong>, with strong focus on <strong>real-world deployment</strong>.
+        </p>
 
-            <section id="research">
-                <h2>Research Interests</h2>
-                <p class="bio">I am actively involved in research focused on diverse areas of computer vision and deep learning, particularly in:</p>
-                <div class="research-areas">
-                    <span class="research-tag">Remote Sensing</span>
-                    <span class="research-tag">Medical Imaging</span>
-                    <span class="research-tag">Visual Language Models</span>
-                    <span class="research-tag">Person Search</span>
-                    <span class="research-tag">Video Object Segmentation</span>
-                    <span class="research-tag">Deep Learning</span>
-                </div>
-            </section>
+        <div class="social-links">
+          <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank"
+            title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="https://github.com/mustansarfiaz" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/mustansar-fiaz-62461618/" target="_blank" title="LinkedIn"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://orcid.org/0000-0003-2289-2284" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+          <a href="mailto:mustansar.fiaz@ibm.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
 
-            <section id="highlights">
-                <h2>Recent Highlights</h2>
-                <div class="highlights-grid">
-                    <div class="highlight-card">
-                        <div class="highlight-date">Feb 2025</div>
-                        <div class="highlight-text">1 paper accepted in CVPR 2025</div>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-date">Nov 2024</div>
-                        <div class="highlight-text">1 paper accepted in WACV 2025 (Oral presentation)</div>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-date">May 2024</div>
-                        <div class="highlight-text">US patent published</div>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-date">Aug 2023</div>
-                        <div class="highlight-text">BMVC 2023 paper (Oral presentation)</div>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-date">Oct 2023</div>
-                        <div class="highlight-text">Joined IBM Research</div>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-date">2021</div>
-                        <div class="highlight-text">Outstanding Research CSE Thesis Award</div>
-                    </div>
-                </div>
-            </section>
+      <div class="hero-image">
+        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQrpIYAmikFxqCxvcffIj_fxF1DWsOg_F_Qe_XN8Mo4cy3j-hdpgdJmEHM_QNzH_arOZXktQqRnwQSKeoLC1sBtu1OerrtKGt8VdU_Ca9J6IbkqeJIWbDGUxmWF52paqp_OLsec8rR6sbsGwhjnkCbHcwZykjh7z05bAg665rABXTWpxbd-iwsbf7M=w1280" alt="Mustansar Fiaz">
+      </div>
+    </section>
 
-            <section id="publications">
-                <h2>Selected Publications</h2>
-                <div class="paper-list">
-                    <div class="paper-item">
-                        <div class="paper-title">EarthDial: Turning Multi-sensory Earth Observations to Interactive Dialogues</div>
-                        <div class="paper-authors">S. Soni*, A. Dudhane*, H. Debary*, <strong>Mustansar Fiaz*</strong>, M. A. Munir, M. S. Danisho, P. Fraccaro, C. Watson, L. J. Klein, S. Khan, F.S. Khan</div>
-                        <div class="paper-venue">CVPR 2025</div>
-                        <div class="paper-links">
-                            <a href="https://arxiv.org/abs/2412.15190" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/hiyamdebary/EarthDial" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
+    <hr>
 
-                    <div class="paper-item">
-                        <div class="paper-title">COSNet: A Novel Semantic Segmentation Network using Enhanced Boundaries in Cluttered Scenes</div>
-                        <div class="paper-authors">M. Ali, M. Javaid, M. Noman, <strong>Mustansar Fiaz</strong>, S. Khan</div>
-                        <div class="paper-venue">WACV 2025 (Oral)</div>
-                        <div class="paper-links">
-                            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/techmn/cosnet" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
+    <div class="row">
+      <!-- Highlights / News -->
+      <section class="col animate-fade-in">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="news-list">
+          <li><strong>[CVPR 2025]</strong> Paper accepted on <strong>EarthDial</strong> - Multi-sensory Earth Observations.</li>
+          <li><strong>[WACV 2025]</strong> Oral presentation for <strong>COSNet</strong> - Semantic Segmentation.</li>
+          <li><strong>[Impact]</strong> <strong>900+</strong> citations across publications.</li>
+          <li><strong>[Award]</strong> <strong>Outstanding Research CSE Thesis Award</strong> (2021).</li>
+          <li><strong>[Award]</strong> <strong>Best Paper Award</strong> at IW-FCV 2022.</li>
+          <li><strong>[Patent]</strong> US Patent published (2024).</li>
+        </ul>
+      </section>
 
-                    <div class="paper-item">
-                        <div class="paper-title">Guided-attention and gated-aggregation network for medical image segmentation</div>
-                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, M. Noman, H. Cholakkal, R.M. Anwer, J. Hanna, F.S. Khan</div>
-                        <div class="paper-venue">Pattern Recognition, 2024</div>
-                        <div class="paper-links">
-                            <a href="https://www.sciencedirect.com/science/article/pii/S0031320324005636" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/mustansarfiaz/ga2net" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">ELGC-Net: Efficient Local–Global Context Aggregation for Remote Sensing Change Detection</div>
-                        <div class="paper-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Khan, F.S. Khan</div>
-                        <div class="paper-venue">IEEE TGRS, 2024</div>
-                        <div class="paper-links">
-                            <a href="https://ieeexplore.ieee.org/abstract/document/10423067" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/techmn/elgcnet" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">Remote Sensing Change Detection With Transformers Trained from Scratch</div>
-                        <div class="paper-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, S. Khan, F.S. Khan</div>
-                        <div class="paper-venue">IEEE TGRS, 2024</div>
-                        <div class="paper-links">
-                            <a href="https://arxiv.org/pdf/2304.06710.pdf" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/mustansarfiaz/ScratchFormer" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">SA2-Net: Scale-aware Attention Network for Microscopic Image Segmentation</div>
-                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, M. Heidari, R.M. Anwer, H. Cholakkal</div>
-                        <div class="paper-venue">BMVC 2023 (Oral)</div>
-                        <div class="paper-links">
-                            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/mustansarfiaz/SA2-Net" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">SAT: Scale-Augmented Transformer for Person Search</div>
-                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, R.M. Anwer, F. Khan</div>
-                        <div class="paper-venue">WACV 2023</div>
-                        <div class="paper-links">
-                            <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Fiaz_SAT_Scale-Augmented_Transformer_for_Person_Search_WACV_2023_paper.pdf" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/mustansarfiaz/SAT" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">PS-ARM: An End-to-End Attention-aware Relation Mixer Network for Person Search</div>
-                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, F. Khan</div>
-                        <div class="paper-venue">ACCV 2022</div>
-                        <div class="paper-links">
-                            <a href="https://openaccess.thecvf.com/content/ACCV2022/papers/Fiaz_PS-ARM_An_End-to-End_Attention-aware_Relation_Mixer_Network_for_Person_Search_ACCV_2022_paper.pdf" target="_blank" class="paper-link">Paper</a>
-                            <a href="https://github.com/mustansarfiaz/PS-ARM" target="_blank" class="paper-link">Code</a>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-title">Handcrafted and Deep Trackers: Recent Visual Object Tracking Approaches and Trends</div>
-                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, A. Mahmood, S. Javed, S. Ki Jung</div>
-                        <div class="paper-venue">ACM Computing Surveys, 2019</div>
-                        <div class="paper-links">
-                            <a href="https://dl.acm.org/citation.cfm?id=3309665" target="_blank" class="paper-link">Paper</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2025 Mustansar Fiaz. All rights reserved.</p>
-        </footer>
+      <!-- Featured Research -->
+      <section class="col animate-fade-in">
+        <h2 class="section-title">Spotlight Research</h2>
+        <div class="card">
+          <div class="card-body">
+            <h4 style="margin: 0; font-size: 1.1rem;">EarthDial (CVPR 2025)</h4>
+            <p class="text-muted" style="margin: 0.5rem 0; font-size: 0.9rem;">Turning Multi-sensory Earth Observations to Interactive Dialogues.</p>
+            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="font-size: 0.85rem; color: var(--primary-color);">Read Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 style="margin: 0; font-size: 1.1rem;">SA2-Net (BMVC 2023)</h4>
+            <p class="text-muted" style="margin: 0.5rem 0; font-size: 0.9rem;">Scale-aware Attention Network for Microscopic Image Segmentation.</p>
+            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="font-size: 0.85rem; color: var(--primary-color);">Read Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <script>
-        // Scroll indicator
-        window.addEventListener('scroll', () => {
-            const scrollIndicator = document.getElementById('scrollIndicator');
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            scrollIndicator.style.width = scrolled + '%';
-        });
+    <!-- Research Background Section -->
+    <section class="startups animate-fade-in">
+      <h2 class="section-title">Research Background</h2>
+      <div class="card-grid" style="grid-template-columns: 1fr;">
+        <article class="card" style="background: rgba(255,255,255,0.8);">
+          <div class="card-body">
+            <p class="card-text" style="line-height: 1.8;">
+              Currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI) with Prof. Fahad Khan and Hisham Cholakkal at the Intelligent Visual Analytics Lab.
+              <br><br>
+              I received my Ph.D. from <strong>Kyungpook National University</strong>, Daegu, Republic of Korea in 2021, supervised by Prof. Soon Ki Jung. My Master's degree was from Sejong University in 2016, supervised by Prof. Sung Wook Baik.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    <!-- Recent Publications -->
+    <section class="animate-fade-in">
+      <h2 class="section-title">Recent Publications</h2>
+      <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--card-shadow);">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">EarthDial: Turning Multi-sensory Earth Observations to Interactive Dialogues</div>
+          <div style="font-size: 0.95rem; color: #666;">S. Soni*, A. Dudhane*, H. Debary*, <strong>Mustansar Fiaz*</strong>, M. A. Munir, M. S. Danisho, P. Fraccaro, C. Watson, L. J. Klein, S. Khan, F.S. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">CVPR 2025</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/hiyamdebary/EarthDial" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">COSNet: A Novel Semantic Segmentation Network using Enhanced Boundaries in Cluttered Scenes</div>
+          <div style="font-size: 0.95rem; color: #666;">M. Ali, M. Javaid, M. Noman, <strong>Mustansar Fiaz</strong>, S. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">WACV 2025 (Oral)</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/techmn/cosnet" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">Guided-attention and gated-aggregation network for medical image segmentation</div>
+          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, M. Noman, H. Cholakkal, R.M. Anwer, J. Hanna, F.S. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">Pattern Recognition, 2024</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://www.sciencedirect.com/science/article/pii/S0031320324005636" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/mustansarfiaz/ga2net" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">ELGC-Net: Efficient Local–Global Context Aggregation for Remote Sensing Change Detection</div>
+          <div style="font-size: 0.95rem; color: #666;">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Khan, F.S. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">IEEE TGRS, 2024</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10423067" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/techmn/elgcnet" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">Remote Sensing Change Detection With Transformers Trained from Scratch</div>
+          <div style="font-size: 0.95rem; color: #666;">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, S. Khan, F.S. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">IEEE TGRS, 2024</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://arxiv.org/pdf/2304.06710.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/mustansarfiaz/ScratchFormer" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">SA2-Net: Scale-aware Attention Network for Microscopic Image Segmentation</div>
+          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, M. Heidari, R.M. Anwer, H. Cholakkal</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">BMVC 2023 (Oral)</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/mustansarfiaz/SA2-Net" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div style="margin-bottom: 1rem;">
+          <div style="font-weight: 600; font-size: 1.05rem;">SAT: Scale-Augmented Transformer for Person Search</div>
+          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, H. Cholakkal, R.M. Anwer, F. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">WACV 2023</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Fiaz_SAT_Scale-Augmented_Transformer_for_Person_Search_WACV_2023_paper.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/mustansarfiaz/SAT" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
+        <div>
+          <div style="font-weight: 600; font-size: 1.05rem;">PS-ARM: An End-to-End Attention-aware Relation Mixer Network for Person Search</div>
+          <div style="font-size: 0.95rem; color: #666;"><strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, F. Khan</div>
+          <div style="font-style: italic; color: #888; font-size: 0.9rem;">ACCV 2022</div>
+          <div style="margin-top: 0.5rem;">
+            <a href="https://openaccess.thecvf.com/content/ACCV2022/papers/Fiaz_PS-ARM_An_End-to-End_Attention-aware_Relation_Mixer_Network_for_Person_Search_ACCV_2022_paper.pdf" target="_blank" style="color: var(--primary-color); margin-right: 1rem;">Paper</a>
+            <a href="https://github.com/mustansarfiaz/PS-ARM" target="_blank" style="color: var(--primary-color);">Code</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 4rem;">
+      <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank" class="btn">View All Publications <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Mustansar Fiaz</p>
+    </div>
+  </footer>
+
+  <script>
+    // AI Background Animation
+    const canvas = document.getElementById('ai-background');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 50;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      // Draw connections
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 - distance / 500})`;
+            ctx.stroke();
+          }
         });
-    </script>
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Scroll Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s, transform 0.6s';
+      observer.observe(el);
+    });
+  </script>
+
 </body>
+
 </html>
