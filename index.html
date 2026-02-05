@@ -148,16 +148,6 @@
       font-weight: 500;
     }
 
-    .hero-text {
-      color: #555;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-      max-width: 600px;
-      line-height: 1.8;
-    }
-
     .hero-image img {
       width: 250px;
       height: 250px;
@@ -194,82 +184,216 @@
       transform: translateY(-3px);
     }
 
+    /* Biography Section */
+    .biography-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .biography-content {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-color);
+    }
+
+    .biography-content p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .biography-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .biography-content strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
     /* Research Interests Section */
     .interests-section {
       background: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 10px;
       box-shadow: var(--card-shadow);
       margin-bottom: 2rem;
     }
 
-    .interests-content {
-      font-size: 1.05rem;
-      line-height: 1.8;
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .research-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .research-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 86, 179, 0.15);
+    }
+
+    .research-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .research-card:hover .research-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .research-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
       color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+
+    .research-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
     }
 
     /* Timeline Highlights */
-    .timeline-section {
+    .highlights-section {
       background: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 10px;
       box-shadow: var(--card-shadow);
       margin-bottom: 2rem;
     }
 
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .timeline::before {
+    .highlight-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      border: 2px solid #f0f0f0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-card::before {
       content: '';
       position: absolute;
-      left: 0;
       top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
-    .timeline-item {
-      position: relative;
-      padding-bottom: 1.5rem;
-      padding-left: 1.5rem;
+    .highlight-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
     }
 
-    .timeline-item::before {
-      content: '';
+    .highlight-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .highlight-featured {
+      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+      border-color: var(--primary-color);
+    }
+
+    .highlight-milestone {
+      background: linear-gradient(135deg, #fff7e6 0%, #ffffff 100%);
+      border-color: #ffa500;
+    }
+
+    .highlight-badge {
       position: absolute;
-      left: -2rem;
-      top: 0.5rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary-color);
-      border: 3px solid white;
-      box-shadow: 0 0 0 3px var(--primary-color);
-    }
-
-    .timeline-item:last-child {
-      padding-bottom: 0;
-    }
-
-    .timeline-date {
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: var(--primary-color);
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .timeline-content {
+    .highlight-milestone .highlight-badge {
+      background: linear-gradient(135deg, #ffa500, #ff8c00);
+    }
+
+    .highlight-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .highlight-card:hover .highlight-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .highlight-milestone .highlight-icon {
+      background: linear-gradient(135deg, #ffa500, #ff8c00);
+    }
+
+    .highlight-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .highlight-content strong {
+      display: block;
       color: var(--text-color);
-      line-height: 1.6;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
     }
 
-    .timeline-content strong {
-      color: var(--primary-color);
+    .highlight-content p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
     }
 
     hr {
@@ -548,20 +672,20 @@
         font-size: 2rem;
       }
 
-      .hero-text {
-        max-width: 100%;
+      .highlights-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       }
 
-      .timeline {
-        padding-left: 1.5rem;
-      }
-
-      .timeline-item {
-        padding-left: 1rem;
+      .research-grid {
+        grid-template-columns: 1fr;
       }
 
       .card-grid {
         grid-template-columns: 1fr;
+      }
+
+      .biography-content p {
+        text-align: left;
       }
     }
 
@@ -594,6 +718,7 @@
       </button>
       <div class="navbar-nav" id="navMenu">
         <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#biography">Biography</a>
         <a class="nav-link" href="#research">Research</a>
         <a class="nav-link" href="#publications">Publications</a>
         <a class="nav-link" href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">Google Scholar</a>
@@ -610,9 +735,6 @@
         <div class="hero-subtitle">
           Staff Research Scientist | Computer Vision | Deep Learning | AI
         </div>
-        <p class="hero-text">
-          Staff research scientist at <strong>IBM Research, Abu Dhabi</strong>, working on <strong>remote sensing, medical imaging, visual language models, and person search</strong>, with strong focus on <strong>real-world deployment</strong>.
-        </p>
 
         <div class="social-links">
           <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank"
@@ -630,119 +752,179 @@
       </div>
     </section>
 
+    <!-- Biography Section -->
+    <section id="biography" class="biography-section animate-fade-in">
+      <h2 class="section-title">Biography</h2>
+      <div class="biography-content">
+        <p>
+          I am a Staff Research Scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>, where I work on advancing the frontiers of computer vision and deep learning. My research focuses on developing innovative solutions for <strong>remote sensing</strong>, <strong>medical imaging</strong>, <strong>visual language models</strong>, and <strong>person search</strong>, with a strong emphasis on real-world deployment and practical impact.
+        </p>
+        <p>
+          Before joining IBM Research in October 2023, I was a Postdoctoral Researcher at <strong>Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</strong>, where I worked with Prof. Fahad Khan and Dr. Hisham Cholakkal at the Intelligent Visual Analytics Lab. During this time, I contributed to cutting-edge research in vision transformers, multi-modal learning, and efficient deep learning architectures.
+        </p>
+        <p>
+          I received my <strong>Ph.D. in Computer Science and Engineering</strong> from <strong>Kyungpook National University</strong>, Daegu, Republic of Korea in 2021 under the supervision of Prof. Soon Ki Jung, where my thesis on deep learning for visual tracking received the <strong>Outstanding Research CSE Thesis Award</strong>. Prior to that, I completed my <strong>Master's degree</strong> at <strong>Sejong University</strong>, Seoul, South Korea in 2016 under the guidance of Prof. Sung Wook Baik, and my <strong>Bachelor's degree</strong> in Computer and Information Science from <strong>Pakistan Institute of Engineering and Applied Sciences (PIEAS)</strong> in 2011.
+        </p>
+      </div>
+    </section>
+
     <!-- Research Interests -->
     <section id="research" class="interests-section animate-fade-in">
       <h2 class="section-title">Research Interests</h2>
-      <p class="interests-content">
-        I am actively involved in research focused on diverse areas of <strong>computer vision</strong> and <strong>deep learning</strong>, particularly in the fields of <strong>remote sensing</strong>, <strong>medical imaging</strong>, and <strong>visual language models</strong>.
-      </p>
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-satellite"></i>
+          </div>
+          <h3>Remote Sensing & Earth Observation</h3>
+          <p>Developing advanced deep learning methods for analyzing multi-spectral satellite imagery, change detection, and environmental monitoring to support climate research and disaster management.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Medical Image Analysis</h3>
+          <p>Designing attention-based architectures for microscopic image segmentation, diagnostic imaging, and computer-aided diagnosis systems to improve healthcare outcomes.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Visual Language Models</h3>
+          <p>Building multi-modal AI systems that combine vision and language understanding for interactive Earth observation dialogues and visual question answering applications.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-user-tag"></i>
+          </div>
+          <h3>Person Search & Re-identification</h3>
+          <p>Creating efficient transformer-based models for person search in complex scenes, focusing on real-time deployment in intelligent surveillance and security systems.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Timeline Highlights -->
-    <section class="timeline-section animate-fade-in">
+    <!-- Recent Highlights -->
+    <section class="highlights-section animate-fade-in">
       <h2 class="section-title">Recent Highlights</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">07/2025</div>
-          <div class="timeline-content">1 paper accepted in <strong>BMVC 2025</strong></div>
+      <div class="highlights-grid">
+        
+        <div class="highlight-card highlight-featured">
+          <div class="highlight-badge">Latest</div>
+          <div class="highlight-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="highlight-date">July 2025</div>
+          <div class="highlight-content">
+            <strong>BMVC 2025</strong>
+            <p>Paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">03/2025</div>
-          <div class="timeline-content">1 paper accepted in <strong>IEEE IGARSS 2025</strong> - Oral presentation</div>
+
+        <div class="highlight-card highlight-featured">
+          <div class="highlight-badge">Oral</div>
+          <div class="highlight-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="highlight-date">March 2025</div>
+          <div class="highlight-content">
+            <strong>IEEE IGARSS 2025</strong>
+            <p>Oral presentation</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">02/2025</div>
-          <div class="timeline-content">1 paper accepted in <strong>CVPR 2025</strong></div>
+
+        <div class="highlight-card highlight-featured">
+          <div class="highlight-badge">Top Venue</div>
+          <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+          <div class="highlight-date">February 2025</div>
+          <div class="highlight-content">
+            <strong>CVPR 2025</strong>
+            <p>Paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">01/2025</div>
-          <div class="timeline-content">1 paper accepted in <strong>IEEE ISBI 2025</strong></div>
+
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="highlight-date">January 2025</div>
+          <div class="highlight-content">
+            <strong>IEEE ISBI 2025</strong>
+            <p>Paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">11/2024</div>
-          <div class="timeline-content">1 paper accepted in <strong>WACV 2025</strong> - Oral presentation</div>
+
+        <div class="highlight-card">
+          <div class="highlight-badge">Oral</div>
+          <div class="highlight-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="highlight-date">November 2024</div>
+          <div class="highlight-content">
+            <strong>WACV 2025</strong>
+            <p>Oral presentation</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">07/2024</div>
-          <div class="timeline-content">1 paper accepted in <strong>Pattern Recognition</strong></div>
+
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="fas fa-book"></i></div>
+          <div class="highlight-date">July 2024</div>
+          <div class="highlight-content">
+            <strong>Pattern Recognition</strong>
+            <p>Journal paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">05/2024</div>
-          <div class="timeline-content">1 <strong>US patent</strong> published</div>
+
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="fas fa-certificate"></i></div>
+          <div class="highlight-date">May 2024</div>
+          <div class="highlight-content">
+            <strong>US Patent Published</strong>
+            <p>Person search technology</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">04/2024</div>
-          <div class="timeline-content">2 papers accepted in <strong>IEEE IGARSS 2024</strong> - both oral presentations</div>
+
+        <div class="highlight-card">
+          <div class="highlight-badge">2 Papers</div>
+          <div class="highlight-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="highlight-date">April 2024</div>
+          <div class="highlight-content">
+            <strong>IEEE IGARSS 2024</strong>
+            <p>Both oral presentations</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">01/2024</div>
-          <div class="timeline-content">1 paper accepted in <strong>ISBI 2024</strong></div>
+
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="highlight-date">January 2024</div>
+          <div class="highlight-content">
+            <strong>ISBI 2024</strong>
+            <p>Paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">01/2024</div>
-          <div class="timeline-content">2 papers accepted in <strong>IEEE TGRS</strong></div>
+
+        <div class="highlight-card">
+          <div class="highlight-badge">2 Papers</div>
+          <div class="highlight-icon"><i class="fas fa-book"></i></div>
+          <div class="highlight-date">January 2024</div>
+          <div class="highlight-content">
+            <strong>IEEE TGRS</strong>
+            <p>Two papers accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">12/2023</div>
-          <div class="timeline-content">1 paper accepted in <strong>IEEE TAI</strong></div>
+
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="fas fa-book"></i></div>
+          <div class="highlight-date">December 2023</div>
+          <div class="highlight-content">
+            <strong>IEEE TAI</strong>
+            <p>Paper accepted</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">10/2023</div>
-          <div class="timeline-content">Joined <strong>IBM Research</strong></div>
+
+        <div class="highlight-card highlight-milestone">
+          <div class="highlight-badge">Career</div>
+          <div class="highlight-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="highlight-date">October 2023</div>
+          <div class="highlight-content">
+            <strong>Joined IBM Research</strong>
+            <p>Staff Research Scientist</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">10/2023</div>
-          <div class="timeline-content">1 paper accepted in <strong>WACV 2024</strong></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">08/2023</div>
-          <div class="timeline-content">1 paper accepted in <strong>BMVC 2023</strong> - Oral presentation</div>
-        </div>
+
       </div>
     </section>
-
-    <!-- Research Background -->
-    <section class="content-section animate-fade-in">
-      <h2 class="section-title">Research Background</h2>
-      <p style="line-height: 1.8; margin-bottom: 1rem;">
-        Currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI) with Prof. Fahad Khan and Hisham Cholakkal at the Intelligent Visual Analytics Lab.
-      </p>
-      <p style="line-height: 1.8;">
-        I received my Ph.D. from <strong>Kyungpook National University</strong>, Daegu, Republic of Korea in 2021, supervised by Prof. Soon Ki Jung. My Master's degree was from Sejong University in 2016, supervised by Prof. Sung Wook Baik.
-      </p>
-    </section>
-
-    <!-- Featured Research -->
-    <section class="animate-fade-in">
-      <h2 class="section-title">Spotlight Research</h2>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-body">
-            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">EarthDial</h4>
-            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Turning Multi-sensory Earth Observations to Interactive Dialogues</p>
-            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">CVPR 2025</p>
-            <a href="https://arxiv.org/abs/2412.15190" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">SA2-Net</h4>
-            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Scale-aware Attention Network for Microscopic Image Segmentation</p>
-            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">BMVC 2023 (Oral)</p>
-            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text-color);">COSNet</h4>
-            <p class="text-muted" style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Novel Semantic Segmentation Network using Enhanced Boundaries</p>
-            <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.75rem;">WACV 2025 (Oral)</p>
-            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 500;">Read Paper <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Recent Publications -->
     <section id="publications" class="content-section animate-fade-in">
       <h2 class="section-title">Recent Publications</h2>
