@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustansar Fiaz - Staff Research Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fdfcfb;
+            --bg-secondary: #f8f6f3;
+            --text-primary: #1a1614;
+            --text-secondary: #6b6560;
+            --accent: #d35d3f;
+            --accent-light: #e8917a;
+            --border: #e6e3df;
+            --highlight-bg: #fff9f5;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 3rem 0 1.5rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .affiliation {
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            background: var(--highlight-bg);
+            border-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        main {
+            padding: 4rem 0;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.5s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.7s; }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .bio {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 900px;
+        }
+
+        .bio a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .bio a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--bg-secondary);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(211, 93, 63, 0.1);
+        }
+
+        .highlight-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-text {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .research-areas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .research-tag {
+            padding: 0.5rem 1rem;
+            background: var(--highlight-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .paper-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .paper-item {
+            padding: 1.75rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .paper-item:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .paper-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .paper-authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-authors strong {
+            color: var(--text-primary);
+        }
+
+        .paper-venue {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .paper-link {
+            padding: 0.4rem 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .paper-link:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--highlight-bg) 0%, var(--bg-secondary) 100%);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Mustansar Fiaz</h1>
+                    <p class="subtitle">Staff Research Scientist</p>
+                    <p class="affiliation">IBM Research, Abu Dhabi</p>
+                    <div class="contact-links">
+                        <a href="mailto:mustansar.fiaz@ibm.com">📧 Email</a>
+                        <a href="https://scholar.google.co.kr/citations?user=Yi5qJmkAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
+                        <a href="https://github.com/mustansarfiaz" target="_blank">💻 GitHub</a>
+                        <a href="https://www.linkedin.com/in/mustansar-fiaz-62461618/" target="_blank">💼 LinkedIn</a>
+                        <a href="https://orcid.org/0000-0003-2289-2284" target="_blank">🆔 ORCID</a>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQrpIYAmikFxqCxvcffIj_fxF1DWsOg_F_Qe_XN8Mo4cy3j-hdpgdJmEHM_QNzH_arOZXktQqRnwQSKeoLC1sBtu1OerrtKGt8VdU_Ca9J6IbkqeJIWbDGUxmWF52paqp_OLsec8rR6sbsGwhjnkCbHcwZykjh7z05bAg665rABXTWpxbd-iwsbf7M=w1280" alt="Mustansar Fiaz">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="about">
+                <h2>About</h2>
+                <div class="bio">
+                    <p>I am currently working as a staff research scientist at <strong>IBM Research, Abu Dhabi, UAE</strong>. Before that, I was a postdoctoral researcher at <a href="https://mbzuai.ac.ae/" target="_blank">Mohamed bin Zayed University of Artificial Intelligence</a> (MBZUAI) with Prof. <a href="https://sites.google.com/view/fahadkhans/home" target="_blank">Fahad Khan</a> and <a href="https://mbzuai.ac.ae/study/faculty/hisham-cholakkal" target="_blank">Hisham Cholakkal</a> at the Intelligent Visual Analytics Lab.</p>
+                    
+                    <p style="margin-top: 1rem;">I received my Ph.D. from <a href="http://en.knu.ac.kr/main/main.htm" target="_blank">Kyungpook National University</a>, Daegu, Republic of Korea in 2021, where I contributed as a researcher in the Virtual Reality laboratory, supervised by Prof. Soon Ki Jung. Prior to that, I pursued my Master's degree from Sejong University in 2016, supervised by Prof. Sung Wook Baik.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">900+</span>
+                        <span class="stat-label">Citations</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">56</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">CVPR '25</span>
+                        <span class="stat-label">Recent Acceptance</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research">
+                <h2>Research Interests</h2>
+                <p class="bio">I am actively involved in research focused on diverse areas of computer vision and deep learning, particularly in:</p>
+                <div class="research-areas">
+                    <span class="research-tag">Remote Sensing</span>
+                    <span class="research-tag">Medical Imaging</span>
+                    <span class="research-tag">Visual Language Models</span>
+                    <span class="research-tag">Person Search</span>
+                    <span class="research-tag">Video Object Segmentation</span>
+                    <span class="research-tag">Deep Learning</span>
+                </div>
+            </section>
+
+            <section id="highlights">
+                <h2>Recent Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-date">Feb 2025</div>
+                        <div class="highlight-text">1 paper accepted in CVPR 2025</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-date">Nov 2024</div>
+                        <div class="highlight-text">1 paper accepted in WACV 2025 (Oral presentation)</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-date">May 2024</div>
+                        <div class="highlight-text">US patent published</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-date">Aug 2023</div>
+                        <div class="highlight-text">BMVC 2023 paper (Oral presentation)</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-date">Oct 2023</div>
+                        <div class="highlight-text">Joined IBM Research</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-date">2021</div>
+                        <div class="highlight-text">Outstanding Research CSE Thesis Award</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications">
+                <h2>Selected Publications</h2>
+                <div class="paper-list">
+                    <div class="paper-item">
+                        <div class="paper-title">EarthDial: Turning Multi-sensory Earth Observations to Interactive Dialogues</div>
+                        <div class="paper-authors">S. Soni*, A. Dudhane*, H. Debary*, <strong>Mustansar Fiaz*</strong>, M. A. Munir, M. S. Danisho, P. Fraccaro, C. Watson, L. J. Klein, S. Khan, F.S. Khan</div>
+                        <div class="paper-venue">CVPR 2025</div>
+                        <div class="paper-links">
+                            <a href="https://arxiv.org/abs/2412.15190" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/hiyamdebary/EarthDial" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">COSNet: A Novel Semantic Segmentation Network using Enhanced Boundaries in Cluttered Scenes</div>
+                        <div class="paper-authors">M. Ali, M. Javaid, M. Noman, <strong>Mustansar Fiaz</strong>, S. Khan</div>
+                        <div class="paper-venue">WACV 2025 (Oral)</div>
+                        <div class="paper-links">
+                            <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ali_COSNet_A_Novel_Semantic_Segmentation_Network_using_Enhanced_Boundaries_in_WACV_2025_paper.html" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/techmn/cosnet" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Guided-attention and gated-aggregation network for medical image segmentation</div>
+                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, M. Noman, H. Cholakkal, R.M. Anwer, J. Hanna, F.S. Khan</div>
+                        <div class="paper-venue">Pattern Recognition, 2024</div>
+                        <div class="paper-links">
+                            <a href="https://www.sciencedirect.com/science/article/pii/S0031320324005636" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/mustansarfiaz/ga2net" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">ELGC-Net: Efficient Local–Global Context Aggregation for Remote Sensing Change Detection</div>
+                        <div class="paper-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Khan, F.S. Khan</div>
+                        <div class="paper-venue">IEEE TGRS, 2024</div>
+                        <div class="paper-links">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10423067" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/techmn/elgcnet" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Remote Sensing Change Detection With Transformers Trained from Scratch</div>
+                        <div class="paper-authors">M. Noman, <strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, S. Khan, F.S. Khan</div>
+                        <div class="paper-venue">IEEE TGRS, 2024</div>
+                        <div class="paper-links">
+                            <a href="https://arxiv.org/pdf/2304.06710.pdf" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/mustansarfiaz/ScratchFormer" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">SA2-Net: Scale-aware Attention Network for Microscopic Image Segmentation</div>
+                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, M. Heidari, R.M. Anwer, H. Cholakkal</div>
+                        <div class="paper-venue">BMVC 2023 (Oral)</div>
+                        <div class="paper-links">
+                            <a href="https://arxiv.org/pdf/2309.16661.pdf" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/mustansarfiaz/SA2-Net" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">SAT: Scale-Augmented Transformer for Person Search</div>
+                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, R.M. Anwer, F. Khan</div>
+                        <div class="paper-venue">WACV 2023</div>
+                        <div class="paper-links">
+                            <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Fiaz_SAT_Scale-Augmented_Transformer_for_Person_Search_WACV_2023_paper.pdf" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/mustansarfiaz/SAT" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">PS-ARM: An End-to-End Attention-aware Relation Mixer Network for Person Search</div>
+                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, H. Cholakkal, S. Narayan, R.M. Anwer, F. Khan</div>
+                        <div class="paper-venue">ACCV 2022</div>
+                        <div class="paper-links">
+                            <a href="https://openaccess.thecvf.com/content/ACCV2022/papers/Fiaz_PS-ARM_An_End-to-End_Attention-aware_Relation_Mixer_Network_for_Person_Search_ACCV_2022_paper.pdf" target="_blank" class="paper-link">Paper</a>
+                            <a href="https://github.com/mustansarfiaz/PS-ARM" target="_blank" class="paper-link">Code</a>
+                        </div>
+                    </div>
+
+                    <div class="paper-item">
+                        <div class="paper-title">Handcrafted and Deep Trackers: Recent Visual Object Tracking Approaches and Trends</div>
+                        <div class="paper-authors"><strong>Mustansar Fiaz</strong>, A. Mahmood, S. Javed, S. Ki Jung</div>
+                        <div class="paper-venue">ACM Computing Surveys, 2019</div>
+                        <div class="paper-links">
+                            <a href="https://dl.acm.org/citation.cfm?id=3309665" target="_blank" class="paper-link">Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Mustansar Fiaz. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollIndicator.style.width = scrolled + '%';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
